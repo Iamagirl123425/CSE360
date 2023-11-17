@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
+   <center>
+      <TabPane prefHeight="400.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Login">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="usernameLogin" layoutX="50.0" layoutY="160.0" promptText="Username" />
+                        <Button layoutX="250.0" layoutY="230.0" mnemonicParsing="false" onMouseClicked="#loginInputs" text="Enter" />
+                        <Label layoutX="50.0" layoutY="125.0" text="Login:" />
+                        <TextField fx:id="passwordTextLogin" layoutX="50.0" layoutY="205.0" promptText="Password" />
+                        <PasswordField fx:id="passwordLogin" layoutX="50.0" layoutY="205.0" promptText="Password" />
+                        <RadioButton fx:id="loginButton" layoutX="250.0" layoutY="209.0" mnemonicParsing="false" onAction="#changeVisibilityLogin" text="Show Password" />
+                        <Text fx:id="loginSuccessful" fill="RED" layoutX="50.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Register">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="usernameRegister" layoutX="50.0" layoutY="160.0" promptText="Username" />
+                        <Button layoutX="250.0" layoutY="230.0" mnemonicParsing="false" onMouseClicked="#registerInputs" text="Enter" />
+                        <Label layoutX="50.0" layoutY="125.0" text="Register:" />
+                        <TextField fx:id="passwordTextRegister" layoutX="50.0" layoutY="205.0" promptText="Password" />
+                        <Text fx:id="passwordValid" fill="RED" layoutX="50.0" layoutY="280" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+                        <PasswordField fx:id="passwordRegister" layoutX="50.0" layoutY="205.0" promptText="Password" />
+                        <RadioButton fx:id="registerButton" layoutX="250.0" layoutY="209.0" mnemonicParsing="false" onAction="#changeVisibilityRegister" text="Show Password" />
+                        <Text layoutX="50.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*password must have at least 1 uppercase, 1 number, 1 special character, and 8 charaters" wrappingWidth="231.34619140625">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
