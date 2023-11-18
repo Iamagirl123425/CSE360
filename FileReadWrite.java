@@ -498,4 +498,20 @@ public class FileReadWrite {
 		}
 		return "not needed here";
 	}
+	
+	public void PlanningPokerSessionDataWrite(String playerNumber, String role, String storyPoint) {
+		try {
+			BufferedWriter data = new BufferedWriter(new FileWriter(globalFileName, true));
+			data.write(playerNumber);
+			data.write(";");
+			data.write(role);
+			data.write(";");
+			data.write(storyPoint);
+			data.newLine();
+			data.close();
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

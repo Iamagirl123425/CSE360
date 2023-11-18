@@ -13,7 +13,7 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <ComboBox fx:id="roleComboBox" layoutX="300.0" layoutY="142.0" prefWidth="150.0" promptText="Choose a number" />
+      <ComboBox fx:id="roleComboBox" layoutX="300.0" layoutY="142.0" prefWidth="150.0" promptText="Choose a role" />
       <ComboBox fx:id="initialStoryPointComboBox" layoutX="300.0" layoutY="198.0" prefWidth="150.0" promptText="Choose a number" />
       <Text layoutX="232.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player:">
          <font>

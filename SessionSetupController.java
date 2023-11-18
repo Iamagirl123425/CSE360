@@ -17,6 +17,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SessionSetupController implements Initializable {
+	
+	int loopCount = 2;
+	int loopPane = 3;
+	
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
@@ -35,8 +39,6 @@ public class SessionSetupController implements Initializable {
 	
 	@FXML
 	private Button submitButton;
-	
-	int loopCount = 1;
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -60,11 +62,28 @@ public class SessionSetupController implements Initializable {
     	FileReadWrite inputNumOfPlayers = new FileReadWrite("numOfPlayers.txt");
     	String loopPaneString = inputNumOfPlayers.numOfPlayersRead(1);
     	int loopPane = Integer.parseInt(loopPaneString);
-    	if(loopCount == loopPane) {
-    		//send to Planning Poker Session
+    	System.out.print("Entered");
+    	if(loopCount > loopPane) {
+    		root = FXMLLoader.load(getClass().getResource("LandingPage.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            System.out.print("Exit");
     	}
     	else {
+    		String loopCountString = Integer.toString(loopCount);
+    		playerLabel.setText(loopCountString);
+    		System.out.println("LoopCountString: " + loopCountString + "\nloopCount: " + loopCount);
+    		String chosenRole = roleComboBox.getValue();
+    		String chosenStoryPoint = initialStoryPointComboBox.getValue();
+    		FileReadWrite planningPokerSessionData = new FileReadWrite("CPPSPI.txt");
+    		planningPokerSessionData.PlanningPokerSessionDataWrite(loopCountString, chosenRole, chosenStoryPoint);
+    		loopCount++;
     		
+    		//reset values so user can enter data again
+    		roleComboBox.getSelectionModel().clearSelection();
+    		initialStoryPointComboBox.getSelectionModel().clearSelection();
     	}
     }
 }
