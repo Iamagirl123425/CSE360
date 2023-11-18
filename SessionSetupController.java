@@ -51,6 +51,7 @@ public class SessionSetupController implements Initializable {
 		FileReadWrite inputNumOfPlayers = new FileReadWrite("numOfPlayers.txt");
 		String maxValStoryPointString = inputNumOfPlayers.numOfPlayersRead(2);
 		int maxValStoryPoint = Integer.parseInt(maxValStoryPointString);
+		userStoryLabel.setText(inputNumOfPlayers.numOfPlayersRead(3));
 		for(int i = 0; i <= maxValStoryPoint; i++) {
 			String addToComboBox = Integer.toString(i);
 			initialStoryPointComboBox.getItems().addAll(addToComboBox);
@@ -64,7 +65,7 @@ public class SessionSetupController implements Initializable {
     	int loopPane = Integer.parseInt(loopPaneString);
     	System.out.print("Entered");
     	if(loopCount > loopPane) {
-    		root = FXMLLoader.load(getClass().getResource("LandingPage.fxml"));
+    		root = FXMLLoader.load(getClass().getResource("PlanningPokerSession.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
@@ -85,5 +86,14 @@ public class SessionSetupController implements Initializable {
     		roleComboBox.getSelectionModel().clearSelection();
     		initialStoryPointComboBox.getSelectionModel().clearSelection();
     	}
+    }
+    
+    @FXML
+    void returnButton (ActionEvent event) throws IOException {
+    	root = FXMLLoader.load(getClass().getResource("PlanningPokerSetNumberOfCharacters.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

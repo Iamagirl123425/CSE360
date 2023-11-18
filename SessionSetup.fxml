@@ -36,6 +36,7 @@
          </font>
       </Text>
       <Text fx:id="userStoryLabel" layoutX="38.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="523.4700546264648" />
-      <Button fx:id="submitButton" layoutX="509.0" layoutY="351.0" mnemonicParsing="false" onAction="#sessionSetupSubmit" text="Sbumit" />
+      <Button fx:id="submitButton" layoutX="509.0" layoutY="351.0" mnemonicParsing="false" onAction="#sessionSetupSubmit" text="Submit" />
+      <Button fx:id="returnButton" layoutX="38.0" layoutY="351.0" mnemonicParsing="false" onAction="#returnButton" text="Return" />
    </children>
 </AnchorPane>
