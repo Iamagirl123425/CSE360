@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.text.Text;
 
-public class PlanningPokerController implements Initializable {
+public class PlanningPokerController {
 	
 	private Stage stage;
 	private Scene scene;
@@ -28,32 +28,6 @@ public class PlanningPokerController implements Initializable {
 	
 	@FXML
 	private TextField userStoryDescription;
-	
-	@FXML
-	private Text playerLabel;
-	
-	@FXML
-	private Text userStoryLabel;
-	
-	@FXML
-	private ComboBox<String> roleComboBox;
-	
-	@FXML
-	private ComboBox<String> initialStoryPointComboBox;
-	
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-//		userStoryLabel.setText("");
-//		
-//    	FileReadWrite inputNumOfPlayers = new FileReadWrite("numOfPlayers.txt");
-//    	String maxStoryPointString = inputNumOfPlayers.numOfPlayersRead(2);
-//    	int maxStoryPoint = Integer.parseInt(maxStoryPointString);
-//        for(int j = 0; j <= maxStoryPoint; j++) {
-//        	String storyPointDisplay = Integer.toString(j);
-//        	initialStoryPointComboBox.getItems().addAll(storyPointDisplay);
-//        }
-	}
 
     @FXML
     void returnLandingPage(ActionEvent event) throws IOException {
@@ -88,15 +62,10 @@ public class PlanningPokerController implements Initializable {
     	FileReadWrite inputNumOfPlayers = new FileReadWrite("numOfPlayers.txt");
     	inputNumOfPlayers.numOfPlayersWrite(numOfPlayersInput, maxStoryPointValInput, userStory);
     	
-    	String loopPaneString = inputNumOfPlayers.numOfPlayersRead(1);
-    	int loopPane = Integer.parseInt(loopPaneString);
-    	String userStoryDescription = inputNumOfPlayers.numOfPlayersRead(3);
-    	
     	root = FXMLLoader.load(getClass().getResource("SessionSetup.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-		playerLabel.setText("Hello");
     }
 }
