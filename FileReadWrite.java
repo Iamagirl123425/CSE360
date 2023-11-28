@@ -498,4 +498,44 @@ public class FileReadWrite {
 		}
 		return "not needed here";
 	}
+	
+	public void PlanningPokerSessionDataWrite(String playerNumber, String role, String storyPoint) {
+		try {
+			BufferedWriter data = new BufferedWriter(new FileWriter(globalFileName, true));
+			data.write(playerNumber);
+			data.write(";");
+			data.write(role);
+			data.write(";");
+			data.write(storyPoint);
+			data.newLine();
+			data.close();
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public String readCPPSPI() {
+		String returnString = "";
+		try {
+			BufferedReader data = new BufferedReader(new FileReader(globalFileName)) ;
+			String line;
+			while ((line = data.readLine()) != null) {
+				String[] dataParse = line.split(";");
+				String playerNumberString = dataParse[0];
+				int playerNumber = Integer.parseInt(playerNumberString) - 1;
+				String playerRole = dataParse[1];
+				String playerStoryPoint = dataParse[2];
+				returnString = returnString + "Player "  + playerNumber + " (" + playerRole + "): " + playerStoryPoint + "\n";
+			}
+			data.close();
+		}
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		return returnString;
+	}
 }

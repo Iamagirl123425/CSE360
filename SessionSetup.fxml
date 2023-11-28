@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PlanningPokerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SessionSetupController">
    <children>
       <Text layoutX="150.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Initial Storypoint:">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <ComboBox fx:id="roleComboBox" layoutX="300.0" layoutY="142.0" prefWidth="150.0" promptText="Choose a number" />
+      <ComboBox fx:id="roleComboBox" layoutX="300.0" layoutY="142.0" prefWidth="150.0" promptText="Choose a role" />
       <ComboBox fx:id="initialStoryPointComboBox" layoutX="300.0" layoutY="198.0" prefWidth="150.0" promptText="Choose a number" />
       <Text layoutX="232.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player:">
          <font>
@@ -35,5 +36,7 @@
          </font>
       </Text>
       <Text fx:id="userStoryLabel" layoutX="38.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="523.4700546264648" />
+      <Button fx:id="submitButton" layoutX="509.0" layoutY="351.0" mnemonicParsing="false" onAction="#sessionSetupSubmit" text="Submit" />
+      <Button fx:id="returnButton" layoutX="38.0" layoutY="351.0" mnemonicParsing="false" onAction="#returnButton" text="Return" />
    </children>
 </AnchorPane>
