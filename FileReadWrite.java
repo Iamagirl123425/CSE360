@@ -130,6 +130,11 @@ public class FileReadWrite {
 					String username = new String(usernameChar);			//finally username, putting characters into one String
 					String password = new String(passwordChar);
 					if (username.equals(searchUsername) && password.equals(searchPassword)) {
+						BufferedWriter currentUser = new BufferedWriter(new FileWriter("currentUser.txt"));
+						StringBuilder string = new StringBuilder();
+						string.append(employeeIDParse[0]).append(";").append(username);
+						currentUser.write(string.toString());
+						currentUser.close();
 						found = true;
 						break;
 					}
@@ -254,20 +259,25 @@ public class FileReadWrite {
 		}
 	}
 	
-	public void addHistoricalProjectDetails(int projectID, String projectName, String startDate, String endDate, String description) {
+	public void addHistoricalProjectDetails(int projectID, String employeeID, String projectName, String deliverable, String effortCategory, String lifeCycle) {
 		try {
 			boolean found = false;
 			BufferedWriter HistoricalProjectsWriter = new BufferedWriter(new FileWriter(globalFileName, true));
 			BufferedReader historicalProjectsReader = new BufferedReader(new FileReader(globalFileName));
 			String line;
+			String projIDString;
 			StringBuilder content = new StringBuilder();
 			while((line = historicalProjectsReader.readLine()) != null) {
 				String[] projectIDStringParse = line.split("=");
-				String projIDString = projectIDStringParse[0];
+				projIDString = projectIDStringParse[0];
+				if (projIDString.equals("")) {
+					System.out.print("fsoidhfl");
+					break;
+				}
 				int projID = Integer.parseInt(projIDString);
 				if(projID == projectID) {
 					found = true;
-					line = projIDString + "=" + projectName + ";" + startDate + ";" + endDate + ";" + description;
+					line = projIDString + "=" + employeeID + ";" + projectName + ";" + deliverable + ";" + effortCategory + ";" + lifeCycle;
 					content.append(line).append("\n");
 //					System.out.println("A project with the same ID already exists. Would you like to override? Y/N");
 //					String choice = sc.nextLine();
@@ -290,7 +300,7 @@ public class FileReadWrite {
 			historicalProjectsReader.close();
 			if(found == false) {
 				String projectIDString = Integer.toString(projectID);
-				String contentToAdd = projectIDString + "=" + projectName + ";" + startDate + ";" + endDate + ";" + description;
+				String contentToAdd = projectIDString + "=" + employeeID + "\n" + projectName + ";" + deliverable + ";" + effortCategory + ";" + lifeCycle;
 				//content.append(contentToAdd);
 				HistoricalProjectsWriter.write(contentToAdd);
 				HistoricalProjectsWriter.newLine();

@@ -1,6 +1,10 @@
 package application;
 
 import javafx.event.ActionEvent;
+import java.io.BufferedWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,6 +44,8 @@ public class LandingPageController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        BufferedWriter dataWrite = new BufferedWriter(new FileWriter("currentUser.txt"));
+        dataWrite.close();
     }
 
 }
