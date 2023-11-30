@@ -44,12 +44,7 @@ public class CreateEmployeeID {
 			String line;
 			while((line = fileReader.readLine()) != null) {
 				String[] equalSignParse = line.split("=");
-				
-				if(equalSignParse.length == 2) {
-					String IDString = equalSignParse[0];
-					String unNeeded = equalSignParse[1];
-					ID = Integer.parseInt(IDString);
-				}
+				ID = Integer.parseInt(equalSignParse[0]);
 				if (ID == baseProjectID) {
 					baseProjectID++;
 				}
@@ -64,7 +59,7 @@ public class CreateEmployeeID {
 		catch (NumberFormatException e) {
 			System.err.println("Error reading the file: " + e.getMessage());
 		}
-		return baseEmployeeID;
+		return baseProjectID;
 	}
 	public int createSessionID() {
 		int ID = 0;

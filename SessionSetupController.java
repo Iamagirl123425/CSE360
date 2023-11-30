@@ -15,6 +15,8 @@ import java.io.IOException;
 import javafx.scene.text.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 public class SessionSetupController implements Initializable {
 	
@@ -99,5 +101,12 @@ public class SessionSetupController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        try {
+            BufferedWriter dataWrite = new BufferedWriter(new FileWriter("CPPSPI.txt"));
+            dataWrite.close();
+        }
+        catch (IOException e) {
+        	e.printStackTrace();
+        }
     }
 }

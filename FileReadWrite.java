@@ -271,7 +271,6 @@ public class FileReadWrite {
 				String[] projectIDStringParse = line.split("=");
 				projIDString = projectIDStringParse[0];
 				if (projIDString.equals("")) {
-					System.out.print("fsoidhfl");
 					break;
 				}
 				int projID = Integer.parseInt(projIDString);
@@ -300,7 +299,7 @@ public class FileReadWrite {
 			historicalProjectsReader.close();
 			if(found == false) {
 				String projectIDString = Integer.toString(projectID);
-				String contentToAdd = projectIDString + "=" + employeeID + "\n" + projectName + ";" + deliverable + ";" + effortCategory + ";" + lifeCycle;
+				String contentToAdd = projectIDString + "=" + employeeID + ";" + projectName + ";" + deliverable + ";" + effortCategory + ";" + lifeCycle;
 				//content.append(contentToAdd);
 				HistoricalProjectsWriter.write(contentToAdd);
 				HistoricalProjectsWriter.newLine();

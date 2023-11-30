@@ -19,11 +19,19 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ViewHistoricalProjectsController implements Initializable{
+	
+	private Stage stage;
+	private Scene scene;
+	private Parent root;
+	
 	@FXML
 	private TextArea HPPSDisplay;
 	
 	@FXML
 	private Button returnToEffortLogger;
+	
+	@FXML
+	private Button EditButton;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -32,7 +40,22 @@ public class ViewHistoricalProjectsController implements Initializable{
 			StringBuilder stringToAdd = new StringBuilder();
 			String line;
 			while((line = dataRead.readLine()) != null) {
-				stringToAdd.append(line).append("\n");
+				String[] dataParse = line.split("=");
+				String[] details = dataParse[1].split(";");
+				String projectID = dataParse[0];
+				String employeeID = details[0];
+				String projectName = details[1];
+				String deliverable = details[2];
+				String effortCategory = details[3];
+				String lifeCycle = details[4];
+				
+				stringToAdd.append("Project ID: " + projectID + "\n" + 
+								   "EmployeeID: " + employeeID + "\n" +
+								   "Project Name: " + projectName + "\n" +
+								   "Deliverable: " + deliverable + "\n" +
+								   "Effort Category: " + effortCategory + "\n" +
+								   "Life Cycle: " + lifeCycle + "\n" +
+								   "----------------------------------------------------------------------------------------" + "\n");
 			}
 			HPPSDisplay.setText(stringToAdd.toString());
 			dataRead.close();
@@ -40,5 +63,23 @@ public class ViewHistoricalProjectsController implements Initializable{
 		catch(IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	public void returnToEffortLogger(ActionEvent event) throws IOException {
+		root = FXMLLoader.load(getClass().getResource("EffortLoggerHome.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+	}
+	
+	@FXML
+	public void editButton(ActionEvent event) throws IOException {
+		root = FXMLLoader.load(getClass().getResource("EditProjects.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 	}
 }
